@@ -1,0 +1,48 @@
+N=4
+
+b=[[0]*N for i in range(N) ] 
+
+def isfalse(i,j):
+    for p in range(N):
+        if b[i][p]==1 or b[p][j]==1:
+            return False
+    
+    for m in range(N):
+        for n in range(N):
+            if i+j==m+n or i-j==m-n:
+                if b[i][j]==1:
+                    return False
+    return True
+
+def nquee(noq):
+    if noq == 0:
+        return True
+        
+    for i in range(N):
+        for j in range(N):
+            if b[i][j]!=1 and isfalse(i,j):
+                b[i][j]=1
+                if nquee(noq-1)==True:
+                    return True
+                b[i][j]=0
+    
+    
+    
+    
+        
+        
+    return False
+                
+                
+def pb(b):
+    for i in b:
+           print(i)
+
+if nquee(N):
+    pb(b)
+else:
+    print("No solution found.")
+
+      
+            
+        
